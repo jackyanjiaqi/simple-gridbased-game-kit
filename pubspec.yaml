@@ -1,7 +1,8 @@
 name: simple_gridbased_game_kit
-description: "基于网格的简单游戏工具包，提供网格页面模板和大屏交互"
+description: "基于网格的简单游戏工具包，提供网格页面模板和大屏交互方案"
 version: 0.1.0
-homepage:
+homepage: https://ketchupui.github.io/
+repository: https://github.com/jackyanjiaqi/simple-gridbased-game-kit
 
 environment:
   sdk: ^3.6.0
@@ -10,8 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  ketchup_ui:
-    path: ../ketchupui
+  ketchup_ui: "^0.1.0"
+    # path: ../ketchupui
 
 dev_dependencies:
   flutter_test:

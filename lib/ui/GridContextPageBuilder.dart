@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ketchup_ui/nav/page_builder.dart';
@@ -33,6 +35,8 @@ abstract class GridContextNavPageBuilder<T extends GridContext> extends Navigato
   }
 
   late ScreenPT willChangePT;
+
+  GridContextNavPageBuilder();
 
   @override
   void onScreenWillChange(ScreenPT willChangePT) {

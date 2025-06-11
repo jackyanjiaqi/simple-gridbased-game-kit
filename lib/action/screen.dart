@@ -40,13 +40,13 @@ abstract mixin class ScreensActionsImpl implements ScreenActionsAcceptor, PadAct
     if(current?.mainPadID != padID){
       switch(event){
         case PadActionEvent.left:
-          current?.accept(GameActionEvent.viceLeft, event, padID);
+          current?.accept(AbstractGameActionEvent.viceLeft, event, padID);
           break;
         case PadActionEvent.right:
-          current?.accept(GameActionEvent.viceRight, event, padID);
+          current?.accept(AbstractGameActionEvent.viceRight, event, padID);
           break;
         case PadActionEvent.up:
-          current?.accept(GameActionEvent.viceUp, event, padID);
+          current?.accept(AbstractGameActionEvent.viceUp, event, padID);
           break;
         case PadActionEvent.down:
         default:
@@ -55,16 +55,16 @@ abstract mixin class ScreensActionsImpl implements ScreenActionsAcceptor, PadAct
     if(current?.mainPadID == padID){
       switch(event){
         case PadActionEvent.left:
-          current?.accept(GameActionEvent.mainLeft, event, padID);
+          current?.accept(AbstractGameActionEvent.mainLeft, event, padID);
           break;
         case PadActionEvent.right:
-          current?.accept(GameActionEvent.mainRight, event, padID);
+          current?.accept(AbstractGameActionEvent.mainRight, event, padID);
           break;
         case PadActionEvent.up:
-          current?.accept(GameActionEvent.mainUp, event, padID);
+          current?.accept(AbstractGameActionEvent.mainUp, event, padID);
           break;
         case PadActionEvent.down:
-          current?.accept(GameActionEvent.mainDown, event, padID);
+          current?.accept(AbstractGameActionEvent.mainDown, event, padID);
         default:
       }
     }

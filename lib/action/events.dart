@@ -1,5 +1,12 @@
-/// 游戏接收的输入事件
-enum GameActionEvent {
+import 'package:flutter/material.dart';
+
+/// 实体按键直传
+abstract class KeyEventTransfer{
+  void transferKeyEvent(KeyEvent kv);
+}
+
+/// 游戏接收的逻辑输入事件
+enum AbstractGameActionEvent {
   mainLeft,
   mainRight,
   mainUp,
@@ -20,15 +27,22 @@ enum PadActionEvent {
   raw
 }
 
-abstract class GameActionsAcceptor{
-  void accept(GameActionEvent gameEvent, PadActionEvent padEvent, int padID);
+/// LogicGame 发出的事件右游戏页面实现游戏逻辑扩展
+enum LogicGameEvent { award, achieve, punish, lost, notify, alert }
+
+abstract class LogicGameEventDispatcher {
+  dispatchGameEvent((LogicGameEvent, String, Object) event);
+}
+
+abstract class AbstractGameActionConsumer{
+  void accept(AbstractGameActionEvent gameEvent, PadActionEvent padEvent, int padID);
 }
 
 abstract class PadActionConsumer{
   void accept(PadActionEvent padEvent, String extra);
 }
 
-abstract class ScreenActionsConsumer extends GameActionsAcceptor{
+abstract class ScreenActionsConsumer extends AbstractGameActionConsumer{
   int get mainPadID;
   late List<int> padIDs;
   void focus(int padID);
@@ -39,6 +53,10 @@ abstract class PadActionDispatcher{
   void dispatch(PadActionEvent event, int padID);
 }
 
+abstract class BypassPadAction {
+  bool get bypassPadAction;
+}
+
 
 abstract class ScreenActionsAcceptor{
   void screenLeft(int padID);
@@ -46,6 +64,6 @@ abstract class ScreenActionsAcceptor{
 }
 
 mixin ActionsAccessor{
-  List<GameActionsAcceptor> get gameActions;
+  List<AbstractGameActionConsumer> get gameActions;
   ScreenActionsAcceptor get screenActions;
 }

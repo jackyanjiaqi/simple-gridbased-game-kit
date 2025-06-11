@@ -1,3 +1,3 @@
-## 0.0.1
+## 0.1.0
 
-* TODO: Describe initial release.
+* 对俄罗斯方块游戏《砖块建造者》的完美支持

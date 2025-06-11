@@ -1,6 +1,7 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import '../utils.dart';
 import 'events.dart';
 
@@ -52,9 +53,11 @@ class KeyboardActionsLisenter extends StatelessWidget {
   final EnableBindPadID setIINEArrow;
   final EnableBindPadID setJIKL;
   final List<Widget>? floatings;
+  final KeyEventTransfer? keyEventTransfer;
   const KeyboardActionsLisenter({
     required this.child, 
     required this.controller,
+    this.keyEventTransfer,
     this.floatings,
     this.keyboardFocus,
     this.textfieldFocus,
@@ -83,6 +86,7 @@ class KeyboardActionsLisenter extends StatelessWidget {
       focusNode: keyboardFocus ?? FocusNode(), 
       autofocus: true,
       onKeyEvent: (KeyEvent event){
+        keyEventTransfer?.transferKeyEvent(event);
         //// Down (Repeat Repeat ...)长按 Up
         if(event.runtimeType == KeyDownEvent) return;
         gridbasedDebug('keyboard:$event');

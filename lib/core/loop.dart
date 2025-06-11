@@ -4,6 +4,10 @@ abstract class GameEventDispatcher {
   dispatchGameEvent((GameEvent, String, Object) event);
 }
 
+abstract class GameLoopAvailable extends GameLoop {
+  bool get hasGame;
+} 
+
 abstract class GameLoop {
   
   beforeGameStart();
@@ -15,10 +19,12 @@ abstract class GameLoop {
   gamePause();
 
   /// 继续游戏
-  gameRestart();
+  gameResume();
 
   /// 结束游戏
   gameEnd();
+
+  bool get started;
 
   bool get paused;
 
