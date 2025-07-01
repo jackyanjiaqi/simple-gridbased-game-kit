@@ -7,7 +7,7 @@ import 'package:ketchup_ui/ketchup_ui.dart';
 
 typedef MatrixRectGetter = RectGetter Function(int xIndex, int yIndex, {int? toXIndex, int? toYIndex, String? named, List<String> extras, Size? sampleSortSize});
 
-abstract class GridContextNavPageBuilder<T extends GridContext> extends NavigatorPageWidget{
+abstract class GridContextNavPageBuilder<T extends GridContext> extends NavPageWidget{
 
   int? _previousColumns;
   int? _currentColumns;
@@ -68,7 +68,7 @@ abstract class GridContextNavPageBuilder<T extends GridContext> extends Navigato
   List<List<RectGetter>> get matrix => namedMatrix(reverseX: matrixReverseX, reverseY: matrixReverseY, named: gridTag);
 
   List<List<RectGetter>> namedMatrix({bool reverseX = false, bool reverseY = false,required String named, List<String> extras= const [], Size? sampleSortSize}){
-    return updateGridContext().createRectGetterMatrix(reverseX: reverseX, reverseY: reverseY, includes: [ ...extras, named, ], looseEqualIgnored: true, sampleSortSize: sampleSortSize);
+    return updateGridContext().createRectGetterMatrix(reverseX: reverseX, reverseY: reverseY, includes: [ ...extras, named, ], sampleSortSize: sampleSortSize);
   }
 
   /// 进行逻辑坐标系到矩阵坐标系转换
